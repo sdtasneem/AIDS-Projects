@@ -11,6 +11,7 @@ For this project, I used an Artificial Neural Network (ANN) for the prediction.
 ## Dataset
 
 I used the IBM Telco Customer Churn dataset.
+Dataset: [Telco Customer Churn Dataset](https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv)
 
 The dataset contains information about telecom customers, including:
 
@@ -33,8 +34,8 @@ The dataset contains information about telecom customers, including:
 
 The target column is `Churn`.
 
-- `Yes` means the customer has churned.
-- `No` means the customer has not churned.
+- Yes means the customer has churned.
+- No means the customer has not churned.
 
 ## What I Did in This Project
 
