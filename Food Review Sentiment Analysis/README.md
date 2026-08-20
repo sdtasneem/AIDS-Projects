@@ -1,4 +1,4 @@
-# Restaurant Review Sentiment Analysis using RNN
+# Food Review Sentiment Analysis using RNN
 
 ## Project Overview
 
