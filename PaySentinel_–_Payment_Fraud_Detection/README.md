@@ -35,6 +35,13 @@ The Streamlit application provides a simple interface where transaction details 
 [Click here to open PaySentinel](https://twilight-frigidity-nervous.ngrok-free.dev)
 
 > **Note:** This is a temporary ngrok link and will work only while the corresponding Colab and Streamlit session is running.
+## Sample Prediction Screenshots
+
+The following PDF files contain screenshots of PaySentinel prediction examples:
+
+- [PaySentinel _example1_Screenshots.pdf](PaySentinel%20_example1_Screenshots.pdf)
+- [PaySentinel _example2_Screenshots.pdf](PaySentinel%20_example2_Screenshots.pdf)
+
 
 ## Project Files
 
