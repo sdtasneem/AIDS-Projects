@@ -41,6 +41,7 @@ The following PDF files contain screenshots of PaySentinel prediction examples:
 
 - [PaySentinel _example1_Screenshots.pdf](PaySentinel%20_example1_Screenshots.pdf)
 - [PaySentinel _example2_Screenshots.pdf](PaySentinel%20_example2_Screenshots.pdf)
+- [PaySentinel _example3_Screenshots.pdf](PaySentinel%20_example3_Screenshots.pdf)
 
 
 ## Project Files
