@@ -1,145 +1,277 @@
-# Telco Customer Churn Prediction using ANN
+# 📞 Telco Customer Churn Prediction Using ANN
 
-## About the Project
+🚀 **Live Demo:** [Telco Customer Churn Prediction](https://aids-projects-2khphca8l3fkzwjyfuvappn.streamlit.app/)
 
-This project is about predicting customer churn in a telecom company.
+## 📌 Project Overview
 
-Customer churn means a customer stops using the company's services. The main aim of this project is to use the customer's information and predict whether the customer is likely to leave the service or not.
+Customer churn is a major challenge for telecom companies. Predicting which customers are likely to leave helps businesses take proactive actions such as offering personalized plans, discounts, and better customer support.
 
-For this project, I used an Artificial Neural Network (ANN) for the prediction.
+This project uses an **Artificial Neural Network (ANN)** to predict whether a telecom customer is likely to churn based on selected customer attributes.
 
-## Dataset
+The trained ANN model is deployed as an interactive **Streamlit web application**, allowing users to enter customer information and receive a churn prediction with probability.
 
-I used the IBM Telco Customer Churn dataset.
-Dataset: [Telco Customer Churn Dataset](https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv)
+---
 
-The dataset contains information about telecom customers, including:
+## 🎯 Objectives
 
-- Customer gender
-- Senior citizen status
-- Partner and dependents
-- Tenure
-- Phone service
-- Internet service
-- Online security
-- Online backup
-- Device protection
-- Technical support
-- Streaming services
-- Contract type
-- Payment method
-- Monthly charges
-- Total charges
-- Churn
+- Predict whether a customer is likely to churn.
+- Build an Artificial Neural Network (ANN) for binary classification.
+- Apply preprocessing and feature scaling.
+- Save and reuse the trained model.
+- Deploy the prediction model using Streamlit.
+- Provide an easy-to-use interface for making predictions.
 
-The target column is `Churn`.
+---
 
-- Yes means the customer has churned.
-- No means the customer has not churned.
+## 📊 Dataset
 
-## What I Did in This Project
+The project uses the **IBM Telco Customer Churn Dataset**.
 
-The project was completed in the following steps:
+### 🔗 Dataset Link
 
-1. Loaded the dataset using Pandas.
-2. Checked the dataset and its columns.
-3. Cleaned the data and handled missing values.
-4. Converted categorical values into numerical values.
-5. Removed duplicate records.
-6. Selected important features using Recursive Feature Elimination (RFE).
-7. Used Random Forest feature importance to understand the important features.
-8. Split the data into training and testing sets.
-9. Scaled the selected features using StandardScaler.
-10. Built an Artificial Neural Network using TensorFlow and Keras.
-11. Trained the ANN model.
-12. Checked the training and validation performance.
-13. Used Keras Tuner to find better ANN hyperparameters.
-14. Used Early Stopping during training.
-15. Evaluated the final model using the test data.
-16. Saved the trained model and preprocessing objects.
-17. Created a function to predict churn for a new customer.
+The dataset used in the notebook is available here:
 
-## Technologies Used
+👉 **[IBM Telco Customer Churn Dataset](https://raw.githubusercontent.com/IBM/telco-customer-churn-on-icp4d/master/data/Telco-Customer-Churn.csv)**
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- TensorFlow
-- Keras
-- Keras Tuner
-- Google Colab
+### Selected Features
 
-## Model
+The ANN model uses the following five selected features:
 
-The main model used in this project is an Artificial Neural Network.
+| Feature | Definition |
+|---------|------------|
+| `tenure` | Number of months the customer has stayed with the telecom company. |
+| `OnlineSecurity` | Indicates whether the customer has an online security service, does not have it, or has no internet service. |
+| `Contract` | Type of contract chosen by the customer: month-to-month, one year, or two year. |
+| `MonthlyCharges` | The amount charged to the customer each month. |
+| `TotalCharges` | The total amount charged to the customer over the duration of the service. |
 
-The ANN contains dense layers and uses:
+These selected features are used as the input variables for the trained ANN model.
 
-- ReLU activation in the hidden layers
-- Sigmoid activation in the output layer
-- Adam optimizer
-- Binary cross-entropy loss
-- Accuracy as the evaluation metric
+---
 
-Since churn prediction is a binary classification problem, the final output represents the probability that a customer will churn.
+## 🧠 Model
 
-## Feature Selection
+An **Artificial Neural Network (ANN)** was developed for binary classification.
 
-I used Recursive Feature Elimination (RFE) with a Random Forest classifier to select the most useful features for the ANN.
-
-This helps reduce the number of input features and focuses the model on the features that are more useful for predicting churn.
-
-## Hyperparameter Tuning
-
-Keras Tuner was used to try different ANN configurations.
-
-The tuning process was used to find suitable values for the number of neurons and the network structure.
-
-Early Stopping was also used to stop training when the validation loss stopped improving.
-
-## Prediction
-
-After training the model, a prediction function was created.
-
-The function takes the selected customer information as input, applies the same scaling used during training, and returns the churn probability and predicted churn status.
-
-## Project Files
+The model predicts:
 
 ```text
-Telco-Customer-Churn-ANN/
-│
-├── Telco_Customer_Churn_ANN_Project.ipynb
-├── README.md
-├── best_churn_prediction.h5
-├── scaler.pkl
-└── selected_features.pkl
+0 → Customer is unlikely to churn
+1 → Customer is likely to churn
 ```
 
-The `.h5` file contains the trained ANN model.
+The final prediction is based on a probability threshold of **0.50**.
 
-The `scaler.pkl` file contains the scaler used during preprocessing.
+```text
+Probability > 0.50 → Churn: Yes
+Probability ≤ 0.50 → Churn: No
+```
 
-The `selected_features.pkl` file contains the features selected for the model.
+---
 
-## How to Run
+## ⚙️ Preprocessing
 
-1. Open the notebook in Google Colab or Jupyter Notebook.
-2. Install the required Python libraries.
-3. Run the notebook cells from beginning to end.
-4. Train the ANN model.
-5. Run the hyperparameter tuning section.
-6. Evaluate the final model.
-7. Use the prediction function to test new customer data.
+The following preprocessing steps were used:
 
-## Conclusion
+1. Selected relevant features.
+2. Converted categorical values into numerical values using factorization.
+3. Applied `StandardScaler` to scale the input features.
+4. Used the same preprocessing objects during prediction.
 
-This project helped me understand how an Artificial Neural Network can be used for a real-world classification problem.
+The following preprocessing artifacts are saved with the project:
 
-The model can be used to identify customers who may be likely to churn. This information can help a telecom company understand customer behaviour and take steps to improve customer retention.
+```text
+scaler.pkl
+selected_features.pkl
+```
 
-## Author
+---
 
-**SYED TASNEEM**
+## 📁 Project Structure
+
+```text
+Customer_Churn_Prediction/
+│
+├── app.py
+├── best_churn_prediction.h5
+├── scaler.pkl
+├── selected_features.pkl
+├── requirements.txt
+├── README.md
+└── Telco_Customer_Churn_ANN_Project.ipynb
+```
+
+### File Description
+
+| File | Description |
+|------|-------------|
+| `app.py` | Streamlit application for customer churn prediction |
+| `best_churn_prediction.h5` | Trained ANN model |
+| `scaler.pkl` | Saved StandardScaler used during preprocessing |
+| `selected_features.pkl` | Saved list of model input features |
+| `requirements.txt` | Required Python libraries |
+| `Telco_Customer_Churn_ANN_Project.ipynb` | Complete model development notebook |
+| `README.md` | Project documentation |
+
+---
+
+## 🖥️ Streamlit Application
+
+The Streamlit application allows users to enter:
+
+- **Tenure**
+- **Online Security**
+- **Contract**
+- **Monthly Charges**
+- **Total Charges**
+
+After clicking the **Predict Churn** button, the application displays:
+
+- Churn probability
+- Whether the customer is likely to churn
+
+### Example
+
+```text
+Churn Probability: 6.55%
+
+✅ Customer is unlikely to churn
+```
+
+---
+
+## 🛠️ Technologies Used
+
+- Python
+- TensorFlow
+- Keras
+- Pandas
+- NumPy
+- Scikit-learn
+- Streamlit
+- Jupyter Notebook
+- GitHub
+
+---
+
+## 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/sdtasneem/AIDS-Projects.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd AIDS-Projects/Customer_Churn_Prediction
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Run the Streamlit Application
+
+Run the following command:
+
+```bash
+streamlit run app.py
+```
+
+The application will open in your browser.
+
+---
+
+## ☁️ Deployment
+
+The Streamlit application is deployed using **Streamlit Community Cloud**.
+
+The application uses:
+
+```text
+Repository: sdtasneem/AIDS-Projects
+Branch: main
+Main file: Customer_Churn_Prediction/app.py
+```
+
+### 🌐 Live Application
+
+👉 [Open the Telco Customer Churn Prediction App](https://aids-projects-2khphca8l3fkzwjyfuvappn.streamlit.app/)
+
+---
+
+## 📈 Model Performance
+
+The final tuned ANN model achieved approximately:
+
+```text
+Accuracy: 78.68%
+Loss: 0.4434
+```
+
+---
+
+## 🔄 Project Workflow
+
+```text
+IBM Telco Customer Churn Dataset
+              ↓
+       Data Preprocessing
+              ↓
+      Feature Selection
+              ↓
+       Feature Scaling
+              ↓
+       ANN Model Training
+              ↓
+       Model Evaluation
+              ↓
+     Save Model & Artifacts
+              ↓
+       Streamlit Application
+              ↓
+      Customer Input
+              ↓
+      Churn Prediction
+```
+
+---
+
+## 💼 Business Use Case
+
+Telecom companies can use customer churn prediction to identify customers who may be at risk of leaving.
+
+The prediction can help businesses:
+
+- Identify high-risk customers.
+- Provide personalized offers.
+- Improve customer retention.
+- Reduce customer acquisition costs.
+- Improve customer satisfaction.
+- Develop targeted retention strategies.
+
+---
+
+## ⚠️ Note
+
+This project is developed for **educational and demonstration purposes**.
+
+The model's predictions should not be considered as guaranteed outcomes. Model performance depends on the quality and distribution of the data used for training.
+
+---
+
+## 👩‍💻 Author
+
+**Tasneem Syed**
+
+Artificial Intelligence & Data Science
+
+---
+
+⭐ If you find this project useful, consider giving the repository a star!
