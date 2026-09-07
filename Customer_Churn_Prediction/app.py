@@ -2,20 +2,27 @@ import streamlit as st
 import tensorflow as tf
 import pandas as pd
 import pickle
+import os
+
+
+# Get the folder where app.py is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 # Load trained model
 model = tf.keras.models.load_model(
-    "best_churn_prediction.h5",
+    os.path.join(BASE_DIR, "best_churn_prediction.h5"),
     compile=False
 )
 
+
 # Load scaler
-with open("scaler.pkl", "rb") as f:
+with open(os.path.join(BASE_DIR, "scaler.pkl"), "rb") as f:
     scaler = pickle.load(f)
 
+
 # Load selected features
-with open("selected_features.pkl", "rb") as f:
+with open(os.path.join(BASE_DIR, "selected_features.pkl"), "rb") as f:
     selected_features = pickle.load(f)
 
 
